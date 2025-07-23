@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic RPS Battle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+    <link rel="icon" href="icon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1 class="title animate__animated animate__bounceIn">Epic RPS Battle</h1>
+            <p class="subtitle">First to win 5 rounds claims victory!</p>
+        </div>
+
+        <div class="scoreboard animate__animated animate__fadeIn">
+            <div class="score player-score">
+                <div class="label">YOU</div>
+                <div class="score-value" id="player-score">0</div>
+            </div>
+            <div class="vs-circle">VS</div>
+            <div class="score computer-score">
+                <div class="label">CPU</div>
+                <div class="score-value" id="computer-score">0</div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div class="choices">
+                <div class="choice-container">
+                    <button class="choice-btn rock animate__animated" id="rock" aria-label="Rock">
+                        <span class="icon">✊</span>
+                        <span class="tooltip">Rock crushes scissors</span>
+                    </button>
+                </div>
+                <div class="choice-container">
+                    <button class="choice-btn paper animate__animated" id="paper" aria-label="Paper">
+                        <span class="icon">✋</span>
+                        <span class="tooltip">Paper covers rock</span>
+                    </button>
+                </div>
+                <div class="choice-container">
+                    <button class="choice-btn scissors animate__animated" id="scissors" aria-label="Scissors">
+                        <span class="icon">✌</span>
+                        <span class="tooltip">Scissors cut paper</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="battlefield">
+                <div class="selection" id="player-selection">
+                    <div class="selection-label">Your choice</div>
+                    <div class="selection-icon">?</div>
+                </div>
+                <div class="result-display animate__animated" id="result-display"></div>
+                <div class="selection" id="computer-selection">
+                    <div class="selection-label">CPU choice</div>
+                    <div class="selection-icon">?</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="round-counter">
+            Round: <span id="round-number">1</span>/<span id="total-rounds">10</span>
+        </div>
+
+        <div class="game-controls">
+            <button class="control-btn" id="reset-btn">New Game</button>
+            <button class="control-btn" id="how-to-play-btn">How to Play</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="result-modal">
+    <div class="modal-content animate__animated">
+        <div class="result-icon" id="result-icon"></div>
+        <h2 id="modal-title">Game Over!</h2>
+        <p id="modal-message"></p>
+        
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-label">Your Score</span>
+                <span class="stat-value" id="modal-player-score">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">CPU Score</span>
+                <span class="stat-value" id="modal-computer-score">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Rounds</span>
+                <span class="stat-value" id="modal-rounds-played">0</span>
+            </div>
+        </div>
+        
+        <button class="modal-btn" id="modal-close">Play Again</button>
+    </div>
+</div>
+
+    <div class="modal" id="how-to-play-modal">
+        <div class="modal-content animate__animated">
+            <h2>How to Play</h2>
+            <ul class="rules-list">
+                <li>✊ Rock crushes ✌ Scissors</li>
+                <li>✋ Paper covers ✊ Rock</li>
+                <li>✌ Scissors cut ✋ Paper</li>
+            </ul>
+            <p>First to win 5 rounds wins the game!</p>
+            <button class="modal-btn" id="how-to-play-close">Got it!</button>
+        </div>
+    </div>
+
+    <audio id="win-sound" src="win.mp3"></audio>
+    <audio id="lose-sound" src="lose.mp3"></audio>
+    <audio id="tie-sound" src="tie.wav"></audio>
+    <audio id="click-sound" src="click.mp3"></audio>
+
+    <script src="script.js"></script>
+    <canvas id="confetti-canvas"></canvas>
+</body>
+</html>
